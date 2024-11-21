@@ -7,6 +7,8 @@
 # seed - specified seed to use before random normal draws
 initialize_bw <- function(p, hidden_p, K, scale = 1e-3, seed = 12345){
   # [ToDo] Initialize intercepts as zeros
+  b1 = rep(0, hidden_p) 
+  b2 = rep(0, K)
   
   # [ToDo] Initialize weights by drawing them iid from Normal
   # with mean zero and scale as sd
