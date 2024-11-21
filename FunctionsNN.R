@@ -152,6 +152,9 @@ NN_train <- function(X, y, Xval, yval, lambda = 0.01,
   for (i in 1:nEpoch){
     # Allocate bathes
     batchids = sample(rep(1:nBatch, length.out = n), size = n)
+    # Initialize current loss and current error
+    cur_loss = 0 
+    cur_error = 0
     # [ToDo] For each batch
     #  - do one_pass to determine current error and gradients
     #  - perform SGD step to update the weights and intercepts
