@@ -106,6 +106,9 @@ evaluate_error <- function(Xval, yval, W1, b1, W2, b2){
   
   # [ToDo] Evaluate error rate (in %) when 
   # comparing scores-based predictions with true yval
+  P = exp(scores_val) / rowSums(exp(scores_val))
+  predictions = max.col(P, ties.method = "first") - 1
+  error = 100 * mean(predictions != yval)
   
   return(error)
 }
