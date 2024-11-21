@@ -63,11 +63,12 @@ one_pass <- function(X, y, K, W1, b1, W2, b2, lambda){
 
   # [To Do] Forward pass
   # From input to hidden 
-  
+  n = nrow(X)
+  H = X %*% W1 + matrix(b1, n, length(b1), byrow = TRUE)
   # ReLU
-  
+  H = (abs(H) + H) / 2
   # From hidden to output scores
- 
+  scores = H %*% W2 + matrix(b2, n, K, byrow = TRUE)
   
   # [ToDo] Backward pass
   # Get loss, error, gradient at current scores using loss_grad_scores function
