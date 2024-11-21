@@ -158,6 +158,21 @@ NN_train <- function(X, y, Xval, yval, lambda = 0.01,
     # [ToDo] For each batch
     #  - do one_pass to determine current error and gradients
     #  - perform SGD step to update the weights and intercepts
+    for (j in 1:nBatch){
+      # Do one_pass to determine current error and gradients
+      pass = one_pass(X[batchids == j, , drop = FALSE], y[batchids == j], length(unique(y)), W1, b1, W2, b2, lambda)
+      gradient = pass$grads # get gradients
+      
+      # Accumulate loss and error
+      cur_loss = cur_loss + pass$loss
+      cur_error = cur_error + pass$error
+      
+      # Perform SGD step to update the weights and intercepts
+      W1 = W1 - rate * gradient$dW1
+      b1 = b1 - rate * gradient$db1
+      W2 = W2 - rate * gradient$dW2
+      b2 = b2 - rate * gradient$db2
+    }
     
     # [ToDo] In the end of epoch, evaluate
     # - average training error across batches
