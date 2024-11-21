@@ -97,6 +97,12 @@ one_pass <- function(X, y, K, W1, b1, W2, b2, lambda){
 # b2 - a vector of size K of intercepts
 evaluate_error <- function(Xval, yval, W1, b1, W2, b2){
   # [ToDo] Forward pass to get scores on validation data
+  nval <- length(yval)
+  h    <- length(b1)
+  K    <- length(b2)
+  Hval = Xval %*% W1 + matrix(b1, nval, h, byrow = T)
+  Hval = (abs(Hval) + Hval) / 2 
+  scores_val = Hval %*% W2 + matrix(b2, nval, K, byrow = T)
   
   # [ToDo] Evaluate error rate (in %) when 
   # comparing scores-based predictions with true yval
