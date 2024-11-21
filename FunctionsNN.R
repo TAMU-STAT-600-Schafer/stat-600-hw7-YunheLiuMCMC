@@ -30,6 +30,9 @@ loss_grad_scores <- function(y, scores, K){
   
   # [ToDo] Calculate loss when lambda = 0
   # loss = ...
+  n = length(y)
+  P = exp(scores) / rowSums(exp(scores))
+  loss = - sum(log(P[cbind(1:n, y + 1)])) / n
   
   # [ToDo] Calculate misclassification error rate (%)
   # when predicting class labels using scores versus true y
