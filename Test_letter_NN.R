@@ -47,6 +47,8 @@ test_error = evaluate_error(Xt, Yt, out2$params$W1, out2$params$b1, out2$params$
 test_error # 16.1
 
 # Calculate two layer neural network running time
+# Time on Blocker building windows PC: 2.3s
+# Time on my Apple M2 Pro: 3.1s
 library(microbenchmark)
 microbenchmark(
   NN_train(Xtrain, Ytrain, Xval, Yval, lambda = 0.001,
