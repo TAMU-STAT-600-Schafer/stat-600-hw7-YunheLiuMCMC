@@ -29,7 +29,7 @@ Xinter <- cbind(rep(1, nrow(Xtrain)), Xtrain)
 Xtinter <- cbind(rep(1, nrow(Xt)), Xt)
 
 #  Apply LR (note that here lambda is not on the same scale as in NN due to scaling by training size)
-out <- LRMultiClassIrina(Xinter, Ytrain, Xtinter, Yt, lambda = 1, numIter = 150, eta = 0.1)
+out <- LRMultiClass(Xinter, Ytrain, Xtinter, Yt, lambda = 1, numIter = 150, eta = 0.1)
 plot(out$objective, type = 'o')
 plot(out$error_train, type = 'o') # around 19.5 if keep training
 plot(out$error_test, type = 'o') # around 25 if keep training
