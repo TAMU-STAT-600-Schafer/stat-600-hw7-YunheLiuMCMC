@@ -46,5 +46,13 @@ lines(1:length(out2$error_val), out2$error_val, col = "red")
 test_error = evaluate_error(Xt, Yt, out2$params$W1, out2$params$b1, out2$params$W2, out2$params$b2)
 test_error # 16.1
 
+library(microbenchmark)
+microbenchmark(
+  NN_train(Xtrain, Ytrain, Xval, Yval, lambda = 0.001,
+           rate = 0.1, mbatch = 50, nEpoch = 150,
+           hidden_p = 100, scale = 1e-3, seed = 12345),
+  times = 20
+)
+
 # [ToDo] Try changing the parameters above to obtain a better performance,
 # this will likely take several trials
