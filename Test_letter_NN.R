@@ -121,6 +121,6 @@ print(paste("Test Error 4:", test_error4))
 # Compare all results
 results = data.frame(
   Configuration = c("Original", "Config 1", "Config 2", "Config 3", "Config 4"),
-  Test_Error = c(16.1, test_error1, test_error2, test_error3, test_error4)
+  Test_Error = c(test_error, test_error1, test_error2, test_error3, test_error4)
 )
 print(results)
