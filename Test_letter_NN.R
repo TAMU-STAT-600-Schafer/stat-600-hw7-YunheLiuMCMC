@@ -46,6 +46,7 @@ lines(1:length(out2$error_val), out2$error_val, col = "red")
 test_error = evaluate_error(Xt, Yt, out2$params$W1, out2$params$b1, out2$params$W2, out2$params$b2)
 test_error # 16.1
 
+# Calculate two layer neural network running time
 library(microbenchmark)
 microbenchmark(
   NN_train(Xtrain, Ytrain, Xval, Yval, lambda = 0.001,
